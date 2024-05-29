@@ -1,0 +1,11 @@
+file_format: "1"
+id: zazu
+name: zazu
+type: shield
+url:
+requires:
+  - pro_micro
+exposes:
+features:
+  - keys
+

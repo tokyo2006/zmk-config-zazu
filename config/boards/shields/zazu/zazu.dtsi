@@ -1,0 +1,266 @@
+/*
+ * Copyright (c) 2021 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include <dt-bindings/zmk/matrix_transform.h>
+#define INPUT_EV_KEY 0x01               /**< Key event */
+#define INPUT_EV_REL 0x02               /**< Relative coordinate event */
+#define INPUT_EV_ABS 0x03               /**< Absolute coordinate event */
+#define INPUT_EV_MSC 0x04               /**< Miscellaneous event */
+#define INPUT_EV_VENDOR_START 0xf0      /**< Vendor specific event start */
+#define INPUT_EV_VENDOR_STOP 0xff       /**< Vendor specific event stop */
+
+#define INPUT_REL_X 0x00                /**< Relative X coordinate */
+#define INPUT_REL_Y 0x01                /**< Relative Y coordinate */
+#define INPUT_REL_WHEEL 0x08            /**< Relative wheel coordinate */
+#define INPUT_REL_HWHEEL 0x06           /**< Relative horizontal wheel coordinate */
+#define INPUT_REL_MISC 0x09             /**< Relative misc coordinate */
+
+/ {
+    chosen {
+        zmk,kscan = &kscan0;
+        zmk,matrix_transform = &default_transform;
+        zephyr,display = &oled;
+    };
+
+    default_transform: keymap_transform_0 {
+        compatible = "zmk,matrix-transform";
+        columns = <11>;
+        rows = <5>;
+        map = <
+RC(0,0) RC(0,1) RC(0,2) RC(0,3) RC(0,4) RC(0,5) RC(0,6) RC(0,7) RC(0,8) RC(0,9) RC(0,10) RC(0,11) 
+RC(1,0) RC(1,1) RC(1,2) RC(1,3) RC(1,4) RC(1,5) RC(1,6) RC(1,7) RC(1,8) RC(1,9) RC(1,10) RC(1,11) 
+RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5) RC(2,6) RC(2,7) RC(2,8) RC(2,9) RC(2,10) RC(2,11)
+RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(3,6) RC(3,7) RC(3,8) RC(3,9) RC(3,10) RC(3,10)
+        >;
+    };
+
+    kscan0: kscan {
+        compatible = "zmk,kscan-gpio-matrix";
+
+        diode-direction = "col2row";
+		col-gpios
+			= <&gpio0 12 GPIO_ACTIVE_HIGH>
+			, <&gpio1 6 GPIO_ACTIVE_HIGH>
+			, <&gpio1 4 GPIO_ACTIVE_HIGH>
+			, <&gpio0 11 GPIO_ACTIVE_HIGH>
+			, <&gpio1 11 GPIO_ACTIVE_HIGH>
+			, <&gpio0 22 GPIO_ACTIVE_HIGH>
+			, <&gpio0 24 GPIO_ACTIVE_HIGH>
+			, <&gpio1 0 GPIO_ACTIVE_HIGH>
+			, <&gpio1 13 GPIO_ACTIVE_HIGH>
+			, <&gpio0 23 GPIO_ACTIVE_HIGH>
+            , <&gpio0 9 GPIO_ACTIVE_HIGH>
+            , <&gpio0 10 GPIO_ACTIVE_HIGH>
+			;
+		row-gpios
+			= <&gpio0 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+			, <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+			, <&gpio0 19  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+			, <&gpio0 21 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+			;
+
+    };
+    center_encoder: encoder_center {
+		compatible = "alps,ec11";
+		label = "CENTER_ENCODER";
+		a-gpios = <&gpio0 31 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+		b-gpios = <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+		resolution = <2>;
+		status = "okay";
+	};
+	sensors {
+		compatible = "zmk,keymap-sensors";
+		sensors = <&center_encoder>;
+	};
+
+};
+
+&pinctrl {
+    i2c0_default: i2c0_default {
+        group1 {
+            psels = <NRF_PSEL(TWIM_SDA, 1, 15)>,
+                <NRF_PSEL(TWIM_SCL, 1, 8)>;
+        };
+    };
+
+    i2c0_sleep: i2c0_sleep {
+        group1 {
+            psels = <NRF_PSEL(TWIM_SDA, 1, 15)>,
+                <NRF_PSEL(TWIM_SCL, 1, 8)>;
+            low-power-enable;
+        };
+    };	
+
+    spi1_default: spi1_default {
+        group1 {
+            psels = <NRF_PSEL(SPIM_SCK, 0, 8)>,
+                <NRF_PSEL(SPIM_MOSI, 0, 17)>,
+                <NRF_PSEL(SPIM_MISO, 0, 17)>;
+        };
+    };
+
+    spi1_sleep: spi1_sleep {
+        group1 {
+            psels = <NRF_PSEL(SPIM_SCK, 0, 8)>,
+                <NRF_PSEL(SPIM_MOSI, 0, 17)>,
+                <NRF_PSEL(SPIM_MISO, 0, 17)>;
+            low-power-enable;
+        };
+    };
+};
+
+&i2c0 {
+	status = "okay";
+
+	compatible = "nordic,nrf-twi";
+    pinctrl-0 = <&i2c0_default>;
+    pinctrl-1 = <&i2c0_sleep>;
+	oled: ssd1306@3c {
+        compatible = "solomon,ssd1306fb";
+        reg = <0x3c>;
+        width = <128>;
+        height = <32>;
+        segment-offset = <0>;
+        page-offset = <0>;
+        display-offset = <0>;
+        multiplex-ratio = <31>;
+        segment-remap;
+        com-invdir;
+        com-sequential;
+        inversion-on;
+        prechargep = <0x22>;
+	};
+};
+
+&uart0 {
+	status = "disabled";
+};
+&spi1 {
+	compatible = "nordic,nrf-spim";
+	status = "okay";
+	pd0: pd@0 {
+		compatible = "pixart,pmw3610";
+		status = "disabled";
+	    pinctrl-0 = <&spi1_default>;
+	    pinctrl-1 = <&spi1_sleep>;
+	    pinctrl-names = "default", "sleep";
+	    cs-gpios = <&gpio0 20 GPIO_ACTIVE_LOW>;
+		label = "TRACKBALL0";
+		reg = <0>;
+		spi-max-frequency = <4000000>;
+	};
+};
+
+&spi1 {
+  status = "okay";
+	pinctrl-0 = <&spi1_default>;
+	pinctrl-1 = <&spi1_sleep>;
+	pinctrl-names = "default", "sleep";
+	cs-gpios = <&gpio0 20 GPIO_ACTIVE_LOW>;
+};
+
+&pd0 {
+  status = "okay";
+	irq-gpios = <&gpio0 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+	cpi = <1200>;
+	evt-type = <INPUT_EV_REL>;
+	x-input-code = <INPUT_REL_X>;
+	y-input-code = <INPUT_REL_Y>;
+};
+
+/{
+  trackball_listener { 
+    compatible = "zmk,input-listener";
+    device = <&pd0>;
+  };
+};
+
+/{
+  /* auto toggle mouse key layer */
+  trackball_peripheral_auto_mouse_listener {
+        compatible = "zmk,input-behavior-listener";
+        device = <&pd0>;
+        layers = <0>;
+	evt-type = <INPUT_EV_REL>;
+	x-input-code = <INPUT_REL_X>;
+	y-input-code = <INPUT_REL_WHEEL>;
+	scale-multiplier = <1>;
+	scale-divisor = <1>;
+        bindings = <&ib_tog_layer 5>;
+   };
+
+   /* input config for mouse scroll mode on momentary mouse scoll layer */
+   trackball_peripheral_scroll_listener {
+           compatible = "zmk,input-behavior-listener";
+           device = <&pd0>;
+           layers = <2>;
+           evt-type = <INPUT_EV_REL>;
+           /* slienting x-axis with alt event code */
+           x-input-code = <INPUT_REL_HWHEEL>;
+           y-input-code = <INPUT_REL_WHEEL>;   
+           /* invent scrolling direction */
+           y-invert;
+           /* align to CCW 45 degree */
+           rotate-deg = <180>;
+           /* NOTE 1: This settings do not compitable with y-invert and x-invert */
+           /* NOTE 2: Floating point computation requires alot of ram. */
+           /*         This feature will cuase stackove flow with CONFIG_ZMK_USB_LOGGING=y *   
+           /* bind a behavior to down scaling input value to (1/8) */
+           /* NOTE: This behavior is different to scale-divisor. */
+           /*       The delta value is accumlated until result >= 1 after cast. */
+           /*       The scrolling is preented in hi-res and allow precise scrolling */
+           bindings = <&ib_wheel_scaler_x 1 8 &ib_wheel_scaler_y 1 10>;
+   };
+
+   trackball_peripheral_snipe_listener {
+          compatible = "zmk,input-behavior-listener";
+          device = <&pd0>;
+          layers = <3>;
+          evt-type = <INPUT_EV_REL>;
+          x-input-code = <INPUT_REL_X>;
+          y-input-code = <INPUT_REL_Y>;
+          scale-multiplier = <1>;
+          scale-divisor = <1>;
+          /*rotate-deg = <315>;*/
+          bindings = <&ib_snipe_scaler_x 1 8 &ib_snipe_scaler_y 1 8>;
+   };
+
+   /* adjust cooldown waiting period for mouse key layer (MSK) after activated */
+   ib_tog_layer: ib_tog_layer {
+        compatible = "zmk,input-behavior-tog-layer";
+        #binding-cells = <1>;
+        time-to-live-ms = <2000>;
+    };
+
+    /* define a resolution down scaler only for INPUT_REL_WHEEL */
+    ib_wheel_scaler_x: ib_wheel_scaler_x {
+        compatible = "zmk,input-behavior-scaler";
+        #binding-cells = <2>;
+        evt-type = <INPUT_EV_REL>;
+        input-code = <INPUT_REL_WHEEL>;
+    };
+
+    ib_wheel_scaler_y: ib_wheel_scaler_y {
+        compatible = "zmk,input-behavior-scaler";
+        #binding-cells = <2>;
+        evt-type = <INPUT_EV_REL>;
+        input-code = <INPUT_REL_HWHEEL>;
+    };
+
+    ib_snipe_scaler_x: ib_snipe_scaler_x {
+        compatible = "zmk,input-behavior-scaler";
+        #binding-cells = <2>;
+        evt-type = <INPUT_EV_REL>;
+        input-code = <INPUT_REL_X>;
+    };
+
+    ib_snipe_scaler_y: ib_snipe_scaler_y {
+        compatible = "zmk,input-behavior-scaler";
+        #binding-cells = <2>;
+        evt-type = <INPUT_EV_REL>;
+        input-code = <INPUT_REL_Y>;
+    };
+};
