@@ -186,7 +186,7 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(3,6) RC(3,7) RC(3,8) RC(3,9) 
    trackball_peripheral_scroll_listener {
            compatible = "zmk,input-behavior-listener";
            device = <&pd0>;
-           layers = <2>;
+           layers = <1 2 3 4>;
            evt-type = <INPUT_EV_REL>;
            /* slienting x-axis with alt event code */
            x-input-code = <INPUT_REL_HWHEEL>;
@@ -208,7 +208,7 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(3,6) RC(3,7) RC(3,8) RC(3,9) 
    trackball_peripheral_snipe_listener {
           compatible = "zmk,input-behavior-listener";
           device = <&pd0>;
-          layers = <3>;
+          layers = <6>;
           evt-type = <INPUT_EV_REL>;
           x-input-code = <INPUT_REL_X>;
           y-input-code = <INPUT_REL_Y>;
