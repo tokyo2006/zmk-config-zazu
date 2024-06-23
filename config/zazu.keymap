@@ -89,10 +89,10 @@
 
         Qwery {
             bindings = <
-&kp ESC       &kp Q      &kp W      &kp E      &kp R         &kp T         &kp Y          &kp U         &kp I           &kp O           &kp P             &kp BSPC
-&kp CAPSLOCK  &kp A      &kp S      &kp D      &kp F         &lt 6 G       &kp H          &kp J         &kp K           &kp L           &kp SEMI          &kp ENTER
-&kp Z         &kp X      &kp C      &kp V      &kp B         &kp N         &kp M          &kp COMMA     &kp DOT         &kp RSHFT       &ltq 1 BACKSPACE  &ltq 3 TAB
-&ltq 2 SPACE  &mkp LCLK  &mkp MCLK  &mkp RCLK  &ltq 2 SPACE  &ltq 7 ENTER  &ltq 6 DELETE  &kp UP_ARROW  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW   &ext_power EP_TOG
+&ext_power EP_TOG  &kp Q      &kp W      &kp E      &kp R         &kp T         &kp Y          &kp U         &kp I           &kp O           &kp P             &kp BSPC
+&kp CAPSLOCK       &kp A      &kp S      &kp D      &kp F         &lt 6 G       &kp H          &kp J         &kp K           &kp L           &kp SEMI          &kp ENTER
+&kp Z              &kp X      &kp C      &kp V      &kp B         &kp N         &kp M          &kp COMMA     &kp DOT         &kp RSHFT       &ltq 1 BACKSPACE  &ltq 3 TAB
+&ltq 2 SPACE       &mkp LCLK  &mkp MCLK  &mkp RCLK  &ltq 2 SPACE  &ltq 7 ENTER  &ltq 6 DELETE  &kp UP_ARROW  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW   &ext_power EP_TOG
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
