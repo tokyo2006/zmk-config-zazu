@@ -7,6 +7,7 @@
 #include <behaviors/mouse_keys.dtsi>
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/mouse.h>
 
@@ -91,7 +92,7 @@
 &kp ESC       &kp Q      &kp W      &kp E      &kp R         &kp T         &kp Y          &kp U         &kp I           &kp O           &kp P             &kp BSPC
 &kp CAPSLOCK  &kp A      &kp S      &kp D      &kp F         &lt 6 G       &kp H          &kp J         &kp K           &kp L           &kp SEMI          &kp ENTER
 &kp Z         &kp X      &kp C      &kp V      &kp B         &kp N         &kp M          &kp COMMA     &kp DOT         &kp RSHFT       &ltq 1 BACKSPACE  &ltq 3 TAB
-&ltq 2 SPACE  &mkp LCLK  &mkp MCLK  &mkp RCLK  &ltq 2 SPACE  &ltq 7 ENTER  &ltq 6 DELETE  &kp UP_ARROW  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp KP_ENTER      &kp RIGHT_ARROW
+&ltq 2 SPACE  &mkp LCLK  &mkp MCLK  &mkp RCLK  &ltq 2 SPACE  &ltq 7 ENTER  &ltq 6 DELETE  &kp UP_ARROW  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW   &ext_power EP_TOG
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
