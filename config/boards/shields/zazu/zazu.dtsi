@@ -169,20 +169,21 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(3,6) RC(3,7) RC(3,8) RC(3,9) 
   };
 };
 
-/{
-  /* auto toggle mouse key layer */
-  trackball_peripheral_auto_mouse_listener {
-        compatible = "zmk,input-behavior-listener";
-        device = <&pd0>;
-        layers = <0>;
-	evt-type = <INPUT_EV_REL>;
-	x-input-code = <INPUT_REL_X>;
-	y-input-code = <INPUT_REL_WHEEL>;
-	scale-multiplier = <1>;
-	scale-divisor = <1>;
-        bindings = <&ib_tog_layer 5>;
-   };
-
+/*   auto toggle mouse key layer 
+* /{
+*   
+*  trackball_peripheral_auto_mouse_listener {
+*        compatible = "zmk,input-behavior-listener";
+*        device = <&pd0>;
+*        layers = <0>;
+*	evt-type = <INPUT_EV_REL>;
+*	x-input-code = <INPUT_REL_X>;
+*	y-input-code = <INPUT_REL_WHEEL>;
+*	scale-multiplier = <1>;
+*	scale-divisor = <1>;
+*        bindings = <&ib_tog_layer 5>;
+*   };
+*/
    /* input config for mouse scroll mode on momentary mouse scoll layer */
    trackball_peripheral_scroll_listener {
            compatible = "zmk,input-behavior-listener";
