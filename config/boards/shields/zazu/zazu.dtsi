@@ -69,7 +69,7 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(3,6) RC(3,7) RC(3,8) RC(3,9) 
 		a-gpios = <&gpio0 31 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
 		b-gpios = <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
 		resolution = <15>;
-        steps = <30>；
+        steps = <30>;
 		status = "okay";
 	};
 	sensors {
@@ -187,7 +187,7 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(3,6) RC(3,7) RC(3,8) RC(3,9) 
    trackball_peripheral_scroll_listener {
            compatible = "zmk,input-behavior-listener";
            device = <&pd0>;
-           layers = <1 2 3 4>;
+           layers = <3>;
            evt-type = <INPUT_EV_REL>;
            /* slienting x-axis with alt event code */
            x-input-code = <INPUT_REL_HWHEEL>;
