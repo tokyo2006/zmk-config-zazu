@@ -66,8 +66,8 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(3,6) RC(3,7) RC(3,8) RC(3,9) 
     center_encoder: encoder_center {
 		compatible = "alps,ec11";
 		label = "CENTER_ENCODER";
-		a-gpios = <&gpio0 29 (GPIO_ACTIVE_LOW | GPIO_PULL_DOWN)>;
-		b-gpios = <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_DOWN)>;
+		a-gpios = <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+		b-gpios = <&gpio0 31 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
 		resolution = <1>;
         steps = <30>;
 		status = "okay";
