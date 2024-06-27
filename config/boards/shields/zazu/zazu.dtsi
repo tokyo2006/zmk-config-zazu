@@ -68,7 +68,7 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(3,6) RC(3,7) RC(3,8) RC(3,9) 
 		label = "CENTER_ENCODER";
 		a-gpios = <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
 		b-gpios = <&gpio0 31 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
-		resolution = <1>;
+		resolution = <2>;
         steps = <30>;
 		status = "okay";
 	};
@@ -154,7 +154,7 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(3,6) RC(3,7) RC(3,8) RC(3,9) 
 		reg = <0>;
 		spi-max-frequency = <4000000>;
 	    irq-gpios = <&gpio0 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-	    cpi = <800>;
+	    cpi = <600>;
 	    evt-type = <INPUT_EV_REL>;
 	    x-input-code = <INPUT_REL_X>;
 	    y-input-code = <INPUT_REL_Y>;
