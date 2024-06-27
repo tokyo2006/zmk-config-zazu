@@ -20,7 +20,7 @@ layers:
   - {t: G, h: Sniper}
   - H
   - {t: J, s: '$$mdi:apple-keyboard-shift$$'}
-  - {t: '$$mdi:apple-keyboard-control$$', h: K}
+  - {t: K, s: '$$mdi:apple-keyboard-control$$'}
   - {t: L, s: '$$mdi:apple-keyboard-option$$'}
   - {t: ;, h: ':', s: ':'}
   - {t: '''', h: '"', s: '"'}
