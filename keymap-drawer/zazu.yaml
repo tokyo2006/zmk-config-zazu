@@ -160,10 +160,10 @@ layers:
   - {t: '0', s: )}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
-  - Gui+ A
-  - Gui+ S
-  - Gui+ D
-  - Gui+ F
+  - {t: A, h: '$$mdi:apple-keyboard-command$$'}
+  - {t: S, h: '$$mdi:apple-keyboard-command$$'}
+  - {t: D, h: '$$mdi:apple-keyboard-command$$'}
+  - {t: F, h: '$$mdi:apple-keyboard-command$$'}
   - Gui+ G
   - KP MULTIPLY
   - '4'
@@ -171,10 +171,10 @@ layers:
   - '6'
   - {t: '-', s: _}
   - {t: '$$mdi:transfer$$', type: trans}
-  - Gui+ Z
-  - Gui+ X
-  - Gui+ C
-  - Gui+ V
+  - {t: Z, h: '$$mdi:apple-keyboard-command$$'}
+  - {t: X, h: '$$mdi:apple-keyboard-command$$'}
+  - {t: C, h: '$$mdi:apple-keyboard-command$$'}
+  - {t: V, h: '$$mdi:apple-keyboard-command$$'}
   - Gui+ B
   - +
   - '1'
@@ -395,18 +395,18 @@ combos:
 - p: [0, 1]
   k: $$mdi:keyboard-esc$$
 - p: [3, 4]
-  k: '['
+  k: {t: '[', s: '{'}
 - p: [7, 8]
-  k: ']'
+  k: {t: ']', s: '}'}
 - p: [26, 27]
   k: '{'
 - p: [30, 31]
   k: '}'
 - p: [15, 16]
   k: <
-- p: [18, 19]
+- p: [19, 20]
   k: '>'
 - p: [15, 20]
   k: '|'
 - p: [3, 8]
-  k: \
+  k: {t: \, s: '|'}
