@@ -204,7 +204,7 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(3,6) RC(3,7) RC(3,8) RC(3,9) 
            /* NOTE: This behavior is different to scale-divisor. */
            /*       The delta value is accumlated until result >= 1 after cast. */
            /*       The scrolling is preented in hi-res and allow precise scrolling */
-           bindings = <&ib_wheel_scaler_x 1 16 &ib_wheel_scaler_y 1 16>;
+           bindings = <&ib_wheel_scaler_x 1 64 &ib_wheel_scaler_y 1 64>;
    };
 
    trackball_peripheral_snipe_listener {
