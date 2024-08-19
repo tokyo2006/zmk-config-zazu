@@ -115,8 +115,8 @@ layers:
   - $$mdi:apple-keyboard-caps$$
   - HOME
   - END
-  - {t: '-', h: _, s: _}
-  - {t: '-', h: _, s: _}
+  - _
+  - {t: '-', s: _}
   - $$mdi:apple-keyboard-shift$$
   - PgUp
   - PgDn
@@ -148,12 +148,12 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   Modify:
   - {t: '$$mdi:transfer$$', type: trans}
-  - Gui+ Q
-  - Gui+ W
-  - Gui+ E
-  - Gui+ R
-  - Gui+ T
-  - KP DIVIDE
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - '6'
   - {t: '7', s: '&'}
   - {t: '8', s: '*'}
   - {t: '9', s: (}
@@ -164,23 +164,23 @@ layers:
   - {t: S, h: '$$mdi:apple-keyboard-command$$'}
   - {t: D, h: '$$mdi:apple-keyboard-command$$'}
   - {t: F, h: '$$mdi:apple-keyboard-command$$'}
-  - Gui+ G
-  - KP MULTIPLY
-  - '4'
-  - {t: '5', s: '%'}
-  - '6'
-  - {t: '-', s: _}
+  - {t: '[', s: '{'}
+  - {t: ']', s: '}'}
+  - $$mdi:apple-keyboard-shift$$
+  - $$mdi:apple-keyboard-control$$
+  - $$mdi:apple-keyboard-option$$
+  - RIGHT GUI
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: Z, h: '$$mdi:apple-keyboard-command$$'}
   - {t: X, h: '$$mdi:apple-keyboard-command$$'}
   - {t: C, h: '$$mdi:apple-keyboard-command$$'}
   - {t: V, h: '$$mdi:apple-keyboard-command$$'}
-  - Gui+ B
-  - +
-  - '1'
-  - '2'
-  - '3'
-  - {t: '=', s: +}
+  - _
+  - {t: '-', s: _}
+  - F1
+  - F2
+  - F3
+  - F4
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
