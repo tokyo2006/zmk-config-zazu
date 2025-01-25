@@ -9,11 +9,17 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/input_transform.h>
+#define SNIPER 6
+#define MOUSE 5
 
 &trackball_listener {
     scroller {
-        layers = <SCRL>;
+        layers = <MOUSE>;
         input-processors = <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>, <&zip_xy_to_scroll_mapper>;
+    };
+    snipe {
+      layers = <SNIPER>;
+      input-processors = <&zip_xy_scaler 1 3>;
     };
 };
 

@@ -11,7 +11,7 @@
 #include <input/processors.dtsi>
 #include "zazu-layout.dtsi"
 
-#define SNIPER 6
+
 &zazu_layout {
     transform = <&default_transform>;
 };
@@ -168,10 +168,6 @@ zephyr_udc0: &usbd {
     compatible = "zmk,input-listener";
     status = "okay";
     device = <&pd0>;
-    snipe {
-      layers = <SNIPER>;
-      input-processors = <&zip_xy_scaler 1 3>;
-    };
   };
 }; 
 
