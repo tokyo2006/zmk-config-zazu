@@ -9,8 +9,26 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/input_transform.h>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/pointing.h>
+#include <dt-bindings/zmk/outputs.h>
+
 #define SNIPER 6
 #define MOUSE 5
+
+#define ZMK_MOUSE_DEFAULT_SCRL_VAL 20    // 10
+
+&msc {
+    acceleration-exponent = <0>;      // 0
+    time-to-max-speed-ms = <0>;       // 300
+    delay-ms = <0>;                   // 0
+};
+
+
+&mmv {
+    time-to-max-speed-ms = <400>;
+    acceleration-exponent = <1>;
+};
 
 &trackball_listener {
     scroller {
@@ -114,6 +132,14 @@
             tapping-term-ms = <135>;
             quick-tap-ms = <0>;
         };
+
+        scroll_encoder: scroll_encoder {
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            bindings = <&msc SCRL_UP>, <&msc SCRL_DOWN>;
+
+            tap-ms = <30>;
+        };
     };
 
     keymap {
@@ -127,7 +153,7 @@
 &ltq 2 SPACE     &mkp LCLK       &mkp MCLK       &mkp RCLK           &ltq 2 SPACE      &ltq 7 ENTER  &ltq 6 DELETE  &kp UP_ARROW         &kp LEFT_ARROW           &kp DOWN_ARROW      &kp ENTER            &kp RIGHT_ARROW
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
+            sensor-bindings = <&scroll_encoder>;
             label = "Qwery";
         };
 
@@ -138,7 +164,7 @@
 &trans  &trans        &kp END       &kp PAGE_DOWN     &kp C_VOLUME_DOWN  &kp C_BRIGHTNESS_DEC  &trans                &trans    &trans          &trans           &trans  &trans
 &trans  &trans        &trans        &trans            &trans             &trans                &trans                &trans    &trans          &trans           &trans  &trans
             >;
-
+            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
             label = "Navi";
         };
 
@@ -149,7 +175,7 @@
 &kp BACKSPACE  &as COLON SEMICOLON  &as LESS_THAN COMMA  &as PLUS EQUAL  &as TILDE GRAVE  &as TILDE GRAVE  &as PLUS EQUAL  &as GREATER_THAN PERIOD  &as DOUBLE_QUOTES SINGLE_QUOTE  &kp DELETE            &trans                 &trans
 &trans         &trans               &trans               &trans          &trans           &trans           &trans          &trans                   &trans                          &trans                &trans                 &trans
             >;
-
+            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
             label = "Symbol";
         };
 
