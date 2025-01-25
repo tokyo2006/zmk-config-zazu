@@ -166,7 +166,7 @@ zephyr_udc0: &usbd {
 / {
   trackball_listener: trackball_listener {
     compatible = "zmk,input-listener";
-    status = "okay"
+    status = "okay";
     device = <&pd0>;
     snipe {
       layers = <SNIPER>;
