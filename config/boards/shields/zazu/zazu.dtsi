@@ -7,6 +7,8 @@
 #include <dt-bindings/zmk/matrix_transform.h>
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 #include <input/processors.dtsi>
+#include <dt-bindings/zmk/input_transform.h>
+#include <input/processors.dtsi>
 #include "zazu-layout.dtsi"
 
 #define SNIPER 6
