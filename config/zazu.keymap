@@ -15,7 +15,7 @@
 &trackball_listener {
     scroller {
         layers = <MOUSE>;
-        input-processors = <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>, <&zip_xy_to_scroll_mapper>;
+        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT | INPUT_TRANSFORM_XY_SWAP)>, <&zip_xy_scaler 1 3>, <&zip_xy_to_scroll_mapper>;
     };
     snipe {
       layers = <SNIPER>;
