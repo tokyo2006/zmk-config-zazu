@@ -20,6 +20,7 @@
     chosen {
         zmk,kscan = &kscan0;
         zephyr,display = &oled;
+        zmk,physical-layout = &zazu_layout;
     };
 
     default_transform: keymap_transform_0 {
